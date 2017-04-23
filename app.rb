@@ -16,7 +16,7 @@ get("/") do
 end
 
 post("/") do
-    name = params.fetch("name")
+    name = params.fetch("name").capitalize
     shoe_brand = ShoeBrand.new({:name => name})
     shoe_brand.save
     @shoe_brands = ShoeBrand.all
@@ -33,7 +33,7 @@ get('/shoe_brand/:id/edit') do
 end
 
 patch("/shoe_brand/:id") do
-    name = params.fetch("name")
+    name = params.fetch("name").capitalize
     @shoe = ShoeBrand.find(params.fetch("id").to_i)
     @shoe.update({:name => name})
     @shoe_brand = ShoeBrand.all
@@ -68,7 +68,7 @@ get("/shoe_shops") do
 end
 
 post("/shoe_shops") do
-    shoe_name = params.fetch("name")
+    shoe_name = params.fetch("name").capitalize
     @shoe_shop = ShoeShop.new({:name => shoe_name})
     @shoe_shop.save
     redirect to ('/')
@@ -87,7 +87,7 @@ delete('/shoe_shop/:id/edit') do
 end
 
 patch("/shoe_shop/:id") do
-    shoe_name = params.fetch("name")
+    shoe_name = params.fetch("name").capitalize
     @shoe = ShoeShop.find(params.fetch("id").to_i)
     @shoe.update({:name => shoe_name})
     redirect to ('/')
