@@ -1,0 +1,96 @@
+/* GENERAL - FONTS, BACKGROUND */
+
+body {
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+  font-weight: bold;
+  background-color: #E9EBEE;
+}
+
+/* NAV BAR STYLING */
+
+.navbar-default {
+  background-color: #ffffff;
+  margin-bottom: 0px;
+  border-color: #ffffff;
+}
+
+.navbar {
+  border-radius: 0px;
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus,
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+  background-color: #ffffff; ;
+  color: grey;
+}
+
+#navbar-brand {
+    width: 250px;
+}
+
+/* ICONS */
+.fa {
+  /*color: rgb(74, 141, 42);*/
+}
+
+
+/* BUTTONS */
+
+.btn, .btn_signup {
+  /*border-radius: 0px;*/
+  /*background-color: #ffffff; ;*/
+}
+
+.btn-success {
+  /*background-color: #ffffff; ;*/
+  /*text-decoration: underline;*/
+  border: none;
+  /*color: black;*/
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-success:hover {
+  /*background-color: #ffffff; ;*/
+  /*border-color: #ffffff;*/
+  /*color: grey;*/
+}
+
+.btn-success {
+  /*color: black !important;*/
+}
+
+
+.btn-lg {
+
+}
+
+td{
+  border-top: 0px solid #000000 !important;
+}
+
+.btn-danger {
+    color: #ffffff; ;
+    /*background-color: ;
+    border-color: inherit;*/
+}
+
+#btn_signup, #btn_login {
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+    /*text-decoration: none;*/
+    /*color: white;*/
+    /*border: none;
+    font-size: 28px;*/
+}
+
+#div-button {
+    margin-bottom: 5px;
+}
+
+
+.pull-right {
+    text-align: right !important;
+    float: right !important;
+    margin-right: 20px;
+}

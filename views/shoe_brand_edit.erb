@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <li class="list-group-item">
+      <img class="center-block img-responsive" style="max-height:300px" src="https://media.giphy.com/media/8l8moRHif1UC4/giphy.gif"></li>
+</div>
+
+<h1>Update <%=@shoe.name %> </h1>
+
+  <form action="/shoe_brand/<%= @shoe.id %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <label for="name">Rename Shoe Brand:</label>
+    <input id="name" name="name" type="text">
+    <button class="btn btn-success">
+        Update
+    </button>
+  </form>

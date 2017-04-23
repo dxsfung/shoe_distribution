@@ -1,0 +1,29 @@
+<div class="container-fluid">
+<li class="list-group-item">
+    <img class="center-block img-responsive" style="max-height:300px" src="https://media.giphy.com/media/8l8moRHif1UC4/giphy.gif"></li>
+</div>
+
+<h1 class="text-center">Shoe Stores and Available Shoe Brands
+</h1>
+
+<h3>
+<ol style="text-aline: center">
+    <% @shoe_shops.each do |shoe| %>
+        <li><%= shoe.name %>
+
+          <form action="/shoe_shop/<%= shoe.id %>/edit">
+          <button class="btn btn-success">
+              Update
+          </button>
+          </form>
+
+        </li>
+    <% end %>
+</ol>
+</h3>
+
+<!-- <form action="/">
+<button class="btn btn-info center-block">
+    Home
+</button>
+</form> -->

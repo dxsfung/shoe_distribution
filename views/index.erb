@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <li class="list-group-item">
+      <img class="center-block img-responsive" style="max-height:300px" src="https://media.giphy.com/media/8l8moRHif1UC4/giphy.gif"></li>
+</div>
+
+<h1>Shops</h1>
+
+<div class="input group">
+    <form action="/shoe_shops" method="post">
+        <label for="name">Name of Shop</label>
+        <input id="name" name="name" type="text">
+        <button type="submit" class="btn btn-success">Add Shoe Store</button>
+    </form>
+</div>
+
+<h4>
+  <ol>
+    <% @shoe_shops.each do |shoe| %>
+    <li>
+        <form action="/shoe_shop/<%= shoe.id %>/edit">
+            <div class="input group">
+                <a href="/shoe_shop_info/<%= shoe.id%>"><%= shoe.name %></a>
+                <button type="submit" class="btn btn-info">Rename Shoe Store</button>
+            </div>
+        </form>
+        <form action="/shoe_shop/<%= shoe.id %>/edit" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </li>
+    <% end %>
+  </ol>
+</h4>
+
+<hr>
+
+<h1>Brands</h1>
+
+<form action="/" method="post">
+<label for="name">Name of Brand</label>
+<input id="name" name="name" type="text">
+
+<button type="submit" class="btn btn-success">Add Shoe Brand</button>
+</form>
+
+<h4>
+  <ol>
+    <% @shoe_brands.each do |shoe| %>
+      <li>
+          <form action="/shoe_brand/<%= shoe.id %>/edit">
+              <div class="input group">
+                  <a href="/shoe_brand_info/<%= shoe.id%>">   <%= shoe.name %></a>
+                  <button type="submit" class="btn btn-info">Rename Shoe Brand</button>
+              </form>
+          </div>
+      </li>
+    <% end %>
+  </ol>
+</h4>
