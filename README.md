@@ -2,6 +2,7 @@
 
 * Application Name: Shoe Distribution
 * Author Name: David Fung
+* Heroku Deployment: https://shoe-distribution.herokuapp.com/
 
 ## Description: Write a program to track shoe brands and what shops they are in. Here are the user stories:
 

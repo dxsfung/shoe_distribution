@@ -1,37 +1,35 @@
 <div class="container-fluid">
-  <li class="list-group-item">
-      <img class="center-block img-responsive" style="max-height:300px" src="https://media.giphy.com/media/8l8moRHif1UC4/giphy.gif"></li>
+<li class="list-group-item">
+    <img class="center-block img-responsive" style="max-height:300px" src="https://media.giphy.com/media/8l8moRHif1UC4/giphy.gif"></li>
 </div>
 
 <h1><%= @shoe.name %></h1>
 <% if @shoe_shops.any? %>
     <form action="/shoe_brand_info/<%= @shoe.id %>" method="post">
-      <input type="hidden" name="_method" value="patch">
-
-      <% @shoe_shops.each do |shop| %>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" name="shoe_shops_ids[]"
-            value="<%= shop.id %>"><%= shop.name %>
-          </label>
-        </div>
-      <% end %>
-      <button class="btn btn-success">
-          Add Store
-      </button>
+        <input type="hidden" name="_method" value="patch">
+            <% @shoe_shops.each do |shop| %>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="shoe_shops_ids[]" value="<%= shop.id %>"><%= shop.name %>
+                    </label>
+                </div>
+            <% end %>
+          <button class="btn btn-success">
+              Add Store
+          </button>
     </form>
-  <% end %>
+<% end %>
 
 <hr>
 
-   <% if @shoe.shoe_shops.any? %>
-    <h3>List of Stores This Shoe Brand is Available</h3>
+<% if @shoe.shoe_shops.any? %>
+<h3>List of Stores This Shoe Brand is Available</h3>
 
     <ol>
       <% @shoe.shoe_shops.each do |shoe| %>
-        <li><%= shoe.name %></li>
+          <li><%= shoe.name %></li>
       <% end %>
     </ol>
-  <% else %>
-    <p>There are no shoes yet!</p>
-  <% end %>
+<% else %>
+<p>There are no shoes yet!</p>
+<% end %>
