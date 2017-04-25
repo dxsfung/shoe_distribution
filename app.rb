@@ -57,7 +57,7 @@ patch("/shoe_brand_info/:id") do
     if shoe_shop_ids != nil
         shoe_shop_ids.each do |x|
             shop = ShoeShop.find(x)
-            BrandShop.create({:shoe_brand => @shoe_brand, :shoe_shop => shop })
+            BrandShop.find_or_create_by({:shoe_brand => @shoe_brand, :shoe_shop => shop })
         end
     end
 
@@ -108,12 +108,11 @@ end
 patch("/shoe_shop_info/:id") do
     shoe_shop_id = params.fetch("id").to_i
     @shoe_shop = ShoeShop.find(shoe_shop_id)
-    # shoe_brand_ids = params.fetch("shoe_brands_ids")
     shoe_brand_ids = params[:shoe_brands_ids]
     if shoe_brand_ids != nil
         shoe_brand_ids.each do |x|
             brand = ShoeBrand.find(x)
-            BrandShop.create({:shoe_brand => brand, :shoe_shop => @shoe_shop })
+            BrandShop.find_or_create_by({:shoe_brand => brand, :shoe_shop => @shoe_shop })
         end
     end
     @shoe_brand = ShoeBrand.all
