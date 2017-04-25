@@ -17,14 +17,16 @@ end
 
 post("/") do
     name = params.fetch("name").capitalize
-    shoe_brand = ShoeBrand.new({:name => name})
-    shoe_brand.save
+    if name != ""
+        shoe_brand = ShoeBrand.new({:name => name})
+        shoe_brand.save
+    end
     @shoe_brands = ShoeBrand.all
     redirect to ('/')
 end
 
 get('/about') do
-  erb(:about)
+    erb(:about)
 end
 
 get('/shoe_brand/:id/edit') do
@@ -51,10 +53,12 @@ patch("/shoe_brand_info/:id") do
     shoe_brand_id = params.fetch("id").to_i
     @shoe_brand = ShoeBrand.find(shoe_brand_id)
 
-    shoe_shop_ids = params.fetch("shoe_shops_ids")
-    shoe_shop_ids.each do |x|
-        shop = ShoeShop.find(x)
-        BrandShop.create({:shoe_brand => @shoe_brand, :shoe_shop => shop })
+    shoe_shop_ids = params[:shoe_shops_ids]
+    if shoe_shop_ids != nil
+        shoe_shop_ids.each do |x|
+            shop = ShoeShop.find(x)
+            BrandShop.create({:shoe_brand => @shoe_brand, :shoe_shop => shop })
+        end
     end
 
     @shoe_shop = ShoeShop.all
@@ -68,9 +72,11 @@ get("/shoe_shops") do
 end
 
 post("/shoe_shops") do
-    shoe_name = params.fetch("name").capitalize
-    @shoe_shop = ShoeShop.new({:name => shoe_name})
-    @shoe_shop.save
+    shop_name = params.fetch("name").capitalize
+    if shop_name != ""
+      @shoe_shop = ShoeShop.new({:name => shop_name})
+      @shoe_shop.save
+    end
     redirect to ('/')
 end
 
@@ -102,10 +108,13 @@ end
 patch("/shoe_shop_info/:id") do
     shoe_shop_id = params.fetch("id").to_i
     @shoe_shop = ShoeShop.find(shoe_shop_id)
-    shoe_brand_ids = params.fetch("shoe_brands_ids")
-    shoe_brand_ids.each do |x|
-        brand = ShoeBrand.find(x)
-        BrandShop.create({:shoe_brand => brand, :shoe_shop => @shoe_shop })
+    # shoe_brand_ids = params.fetch("shoe_brands_ids")
+    shoe_brand_ids = params[:shoe_brands_ids]
+    if shoe_brand_ids != nil
+        shoe_brand_ids.each do |x|
+            brand = ShoeBrand.find(x)
+            BrandShop.create({:shoe_brand => brand, :shoe_shop => @shoe_shop })
+        end
     end
     @shoe_brand = ShoeBrand.all
     redirect to("/shoe_shop_info/#{shoe_shop_id}")
